@@ -187,16 +187,14 @@ $(BUILD_DIR):
 clean:
 	-rm -fR $(BUILD_DIR)
 connect:
-	openocd.exe \
-	-s /home/budali11/stm32h7-bootloader-application/scripts \
-	-f /home/budali11/stm32h7-bootloader-application/scripts/interface/cmsis-dap.cfg \
-	-f /home/budali11/stm32h7-bootloader-application/scripts/target/stm32h7x_extern.cfg \
+	openocd \
+	-s /Users/leo/work/stm32h7-bootloader-application/scripts \
+	-f /Users/leo/work/stm32h7-bootloader-application/scripts/target/stm32h7x_extern.cfg \
 	#openocd -s /usr/share/openocd/scripts -f /usr/share/openocd/scripts/interface/cmsis-dap.cfg -f /usr/share/openocd/scripts/target/stm32h7x_extern.cfg
 download:
-	openocd.exe \
-	-s /home/budali11/stm32h7-bootloader-application/scripts \
-	-f /home/budali11/stm32h7-bootloader-application/scripts/interface/cmsis-dap.cfg \
-	-f /home/budali11/stm32h7-bootloader-application/scripts/target/stm32h7x_extern.cfg \
+	openocd \
+	-s /Users/leo/work/stm32h7-bootloader-application/scripts \
+	-f /Users/leo/work/stm32h7-bootloader-application/scripts/target/stm32h7x_extern.cfg \
 	-c init \
 	-c halt \
 	-c "flash write_image erase $(BUILD_DIR)/$(TARGET).hex 0x00000000" \

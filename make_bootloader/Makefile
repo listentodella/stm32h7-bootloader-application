@@ -202,18 +202,16 @@ clean:
 	-rm -fR $(BUILD_DIR)
 
 connect:
-	openocd.exe \
-	-s /home/budali11/stm32h7-bootloader-application/scripts \
-	-f /home/budali11/stm32h7-bootloader-application/scripts/interface/cmsis-dap.cfg \
-	-f /home/budali11/stm32h7-bootloader-application/scripts/target/stm32h7x.cfg 
+	openocd \
+	-s ../scripts \
+	-f ../scripts/target/stm32h7x.cfg 
 extern:
-	openocd.exe -s /mnt/f/openocd/openocd-v0.12.0/scripts -f /mnt/f/openocd/openocd-v0.12.0/scripts/interface/cmsis-dap.cfg -f /mnt/f/openocd/openocd-v0.12.0/scripts/target/stm32h7x_extern.cfg
+	openocd -s /mnt/f/openocd/openocd-v0.12.0/scripts -f /mnt/f/openocd/openocd-v0.12.0/scripts/interface/cmsis-dap.cfg -f /mnt/f/openocd/openocd-v0.12.0/scripts/target/stm32h7x_extern.cfg
 	
 download:
-	openocd.exe \
-	-s /home/budali11/stm32h7-bootloader-application/scripts \
-	-f /home/budali11/stm32h7-bootloader-application/scripts/interface/cmsis-dap.cfg \
-	-f /home/budali11/stm32h7-bootloader-application/scripts/target/stm32h7x.cfg \
+	openocd \
+	-s ../scripts \
+	-f ../scripts/target/stm32h7x.cfg \
 	-c init \
 	-c halt \
 	-c "flash write_image erase $(BUILD_DIR)/$(TARGET).hex" \
@@ -226,7 +224,7 @@ download:
 	#-f /usr/share/openocd/scripts/target/stm32h7x.cfg \
 
 gdb:
-	arm-none-eabi-gdb $(BUILD_DIR)/$(TARGET).elf -c "target extended-remote 127.0.0.1:3333"
+	arm-none-eabi-gdb $(BUILD_DIR)/$(TARGET).elf -c "target extended-remote :3333"
 #######################################
 # dependencies
 #######################################
