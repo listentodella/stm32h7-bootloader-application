@@ -1,6 +1,7 @@
 *.patch
 .cache
 compile_commands.json
+target
 
 # Prerequisites
 *.d
