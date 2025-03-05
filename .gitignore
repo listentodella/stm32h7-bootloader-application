@@ -1,4 +1,4 @@
-
+*.patch
 .cache
 compile_commands.json
 
